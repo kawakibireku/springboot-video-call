@@ -20,7 +20,8 @@ function logError(error) {
 function connect(username) {
     console.log('connect');
     var loc = window.location
-    var uri = "ws://" + loc.hostname + ":8080/socket"
+    console.log(loc.hostname)
+    var uri = "wss://" + loc.hostname + ":8080/socket"
     sock = new WebSocket(uri);
 
     sock.onopen = function(e) {
@@ -36,6 +37,7 @@ function connect(username) {
         // should check better here, it could have failed
         // moreover not logout implemented
         loggedIn = true;
+        console.log('connected');
     }
 
     sock.onclose = function(e) {
